@@ -1,0 +1,46 @@
+'use client';
+import { useEffect } from 'react';
+
+export function useScrollBehavior() {
+  useEffect(() => {
+    const navbar = document.getElementById('navbar');
+    const header = document.getElementById('header');
+
+    function applyScrollBehavior() {
+      // Navbar scroll behavior
+      if (navbar) {
+        const fixednav = navbar.offsetTop;
+        if (window.pageYOffset > fixednav) {
+          navbar.classList.add('navbar-fixed');
+        } else {
+          navbar.classList.remove('navbar-fixed');
+        }
+      }
+
+      // Header scroll behavior on mobile only
+      if (header) {
+        if (window.innerWidth < 768) {
+          const fixedHeader = header.offsetTop;
+          if (window.pageYOffset > fixedHeader) {
+            header.classList.add('navbar-fixed');
+          } else {
+            header.classList.remove('navbar-fixed');
+          }
+        } else {
+          header.classList.remove('navbar-fixed');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', applyScrollBehavior);
+    window.addEventListener('resize', applyScrollBehavior);
+
+    // Jalankan sekali saat load pertama
+    applyScrollBehavior();
+
+    return () => {
+      window.removeEventListener('scroll', applyScrollBehavior);
+      window.removeEventListener('resize', applyScrollBehavior);
+    };
+  }, []);
+}
