@@ -1,9 +1,15 @@
 import Image from "next/image";
 
-export default function NavbarLogo() {
+interface NavbarLogoProps {
+  width?: number;
+  height?: number;
+  className?: string;
+}
+
+export default function NavbarLogo({ width = 100, height = 100, className = "" }: NavbarLogoProps) {
   return (
-    <div>
-      <Image src={'/images/logo.png'} alt="arsiwebLogo" width={100} height={100} />
+    <div className={className}>
+      <Image src={'/images/logo.png'} alt="arsiwebLogo" width={width} height={height} />
     </div>
   );
 }
