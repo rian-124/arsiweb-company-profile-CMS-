@@ -2,6 +2,7 @@
 
 import React from 'react';
 import IconText from "../common/IconText";
+import Image from "next/image";
 
 const TeamSection = () => {
     const teamMembers = [
@@ -68,7 +69,7 @@ const TeamSection = () => {
                     <div className="md:col-span-2 lg:col-span-3 flex justify-center">
                         <div className="w-full md:w-1/2 lg:w-1/3">
                             <div className="bg-[#756662] rounded-lg overflow-hidden">
-                                <img 
+                                <Image
                                     src={teamMembers[0].image} 
                                     alt={teamMembers[0].name}
                                     className="w-full h-78 object-cover"
@@ -84,7 +85,7 @@ const TeamSection = () => {
                     {teamMembers.slice(1).map((member) => (
                         <div key={member.id}>
                             <div className="bg-[#7d7d7d] rounded-lg overflow-hidden">
-                                <img 
+                                <Image 
                                     src={member.image} 
                                     alt={member.name}
                                     className="w-full h-78 object-cover"

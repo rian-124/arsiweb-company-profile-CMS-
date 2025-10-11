@@ -48,7 +48,7 @@ const FaqSection = () => {
                     <div className="flex flex-col gap-6">
                         {/* Image */}
                         <div className="bg-gray-200 rounded-2xl overflow-hidden">
-                            <img
+                            <Image
                                 src="/images/dummy.webp"
                                 alt="Customer Support"
                                 className="w-full h-auto object-cover"
