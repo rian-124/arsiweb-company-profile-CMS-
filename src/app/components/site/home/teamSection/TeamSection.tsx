@@ -2,7 +2,6 @@
 
 import IconText from '@/app/components/common/IconText';
 import React from 'react';
-import IconText from "../common/IconText";
 import Image from "next/image";
 
 const TeamSection = () => {
