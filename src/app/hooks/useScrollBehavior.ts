@@ -17,7 +17,7 @@ export function useScrollBehavior() {
         }
       }
 
-      // Header scroll behavior on mobile only
+      // Header scroll behavior on mobile
       if (header) {
         if (window.innerWidth < 768) {
           const fixedHeader = header.offsetTop;
@@ -35,7 +35,6 @@ export function useScrollBehavior() {
     window.addEventListener('scroll', applyScrollBehavior);
     window.addEventListener('resize', applyScrollBehavior);
 
-    // Jalankan sekali saat load pertama
     applyScrollBehavior();
 
     return () => {

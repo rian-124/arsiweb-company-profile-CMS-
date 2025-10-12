@@ -2,9 +2,10 @@
 import type { Metadata } from "next";
 import { Anta, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header/Header";
-import Navbar from "./components/navbar/Navbar";
-import Sidebar from "./components/sidebar/Sidebar";
+import Header from "./components/site/home/header/Header";
+import Navbar from "./components/site/layout/navbar/Navbar";
+import Footer from "./components/site/layout/Footer/Footer";
+import Sidebar from "./components/site/layout/sidebar/Sidebar";
 
 const anta = Anta({
   weight: "400",
@@ -42,6 +43,7 @@ export default function RootLayout({
           <Header />
           <Navbar />
           <main className="overflow-x-hidden">{children}</main>
+           <Footer />
         </div>
           <Sidebar />
       </body>

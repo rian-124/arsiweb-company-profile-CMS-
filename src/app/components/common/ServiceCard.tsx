@@ -21,8 +21,8 @@ export default function ServiceCard({
     hasBorder
       ? "border-b border-dashed md:border-b-0 md:border-r md:border-dashed"
       : ""
-  } md:w-fit p-5 w-full`}>
-      <Image src={iconSrc} alt={title} width={32} height={32} />
+  } md:w-fit p-5 w-full space-y-5`}>
+      <Image src={iconSrc} alt={title} width={50} height={50} />
       <div className="space-y-7 group">
         <div className="space-y-3">
           <h3 className="text-2xl font-anta group-hover:text-sky-500 transition-all duration-200">{title}</h3>

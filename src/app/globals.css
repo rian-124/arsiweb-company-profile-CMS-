@@ -42,3 +42,47 @@ body {
 .scrollbar-none::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
+
+
+.swiper {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper-slide {
+  opacity: 0 !important;
+  transition: opacity 0.8s ease-in-out;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.swiper-slide-active {
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.swiper-pagination {
+  bottom: 0.5rem !important;
+  text-align: left !important;
+  padding-left: 1rem;
+}
+
+/* Mobile kecil (sm / md) */
+@media (max-width: 768px) {
+  .swiper-pagination {
+    bottom: -10px !important;  /* naik sedikit agar pas di mobile */
+  }
+}
+
+.swiper-pagination-bullet {
+  transition: all 0.4s ease;
+}
+
+.swiper-pagination-bullet-active {
+  width: 1rem !important;
+  border-radius: 1rem !important;
+  background-color: white !important;
+}
