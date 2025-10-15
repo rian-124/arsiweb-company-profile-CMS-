@@ -13,7 +13,7 @@ export default function SidebarMenu() {
     { name: "Tentang Kami", href: "#tentang-kami" },
     { name: "Layanan Kami", href: "#layanan-kami" },
     { name: "Blog", href: "/blog" },
-    { name: "Kontak", href: "/kontak" },
+    { name: "Kontak", href: "/contact" },
   ];
 
   useEffect(() => {

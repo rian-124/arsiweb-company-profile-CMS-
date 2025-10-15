@@ -72,6 +72,8 @@ const TeamSection = () => {
                                 <Image
                                     src={teamMembers[0].image} 
                                     alt={teamMembers[0].name}
+                                    width={400}
+                                    height={312}
                                     className="w-full h-78 object-cover"
                                 />
                                 <div className="bg-[#756662] p-4 text-center">
@@ -88,6 +90,8 @@ const TeamSection = () => {
                                 <Image 
                                     src={member.image} 
                                     alt={member.name}
+                                    width={400}
+                                    height={312}
                                     className="w-full h-78 object-cover"
                                 />
                                 <div className="bg-[#7d7d7d] p-4 text-center">
