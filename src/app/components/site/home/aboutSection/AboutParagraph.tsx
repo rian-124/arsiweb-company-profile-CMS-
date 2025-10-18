@@ -31,7 +31,7 @@ export default function AboutParagraph({ text } : { text: string }) {
   return (
     <div
       ref={textRef}
-      className="text-4xl text-center font-anta flex flex-wrap justify-center"
+      className="md:text-4xl sm:text-2xl text-xl text-center font-anta flex flex-wrap justify-center"
     >
       {text.split("").map((char, i) => (
         <AnimatedText key={i} char={char} />

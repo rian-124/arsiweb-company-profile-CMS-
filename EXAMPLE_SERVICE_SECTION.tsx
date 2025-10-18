@@ -35,7 +35,7 @@ export default async function ServicesSection({ id }: { id: string }) {
   return (
     <section
       id={id}
-      className="md:px-40 md:py-40 px-10 py-40 transition-all duration-500"
+      className="md:px-20 lg:px-40 md:py-40 px-10 py-40 transition-all duration-500"
     >
       {/* Header section tetap sama */}
       <IconText
@@ -51,7 +51,7 @@ export default async function ServicesSection({ id }: { id: string }) {
       </div>
 
       {/* 5. Loop data dari Firestore */}
-      <div className="md:flex md:flex-row flex flex-col text-black py-10 text-xs">
+      <div className="md:flex md:flex-row flex flex-col text-black py-10 text-xs border">
         {services.map((service, index) => (
           <ServiceCard
             key={service.id} // PENTING: key harus unique

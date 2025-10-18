@@ -6,14 +6,14 @@ import ProjectSlider from "./ProjectSlider";
 
 export default function ProjectSection() {
   return (
-    <section className="bg-black md:px-40 py-40 px-10 rounded-t-[4rem]">
+    <section className="bg-black md:px-20 lg:px-40 py-40 px-10 md:rounded-t-[4rem] sm:rounded-t-[2rem] rounded-t-[2rem]">
       <IconText
         iconSrc="/icons/winterSecond.svg"
         color="text-sky-500"
         text="LAYANAN KAMI"
       />
 
-      <div className="text-white font-anta md:text-4xl text-3xl">
+      <div className="text-white font-anta text-xl md:text-2xl lg:text-4xl">
         <h1 className="flex flex-col gap-2">
           Proyek Kami Membantu
           <span className="text-sky-500 block">Mereka Go Digital</span>

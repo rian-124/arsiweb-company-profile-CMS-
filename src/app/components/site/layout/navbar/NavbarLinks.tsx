@@ -20,15 +20,32 @@ export default function NavbarLinks({ variant = "horizontal" }: NavbarLinksProps
   const pathname = usePathname();
   const [hash, setHash] = useState("");
 
+  // 🔹 Set hash aktif berdasarkan scroll (scroll spy)
   useEffect(() => {
-    // Hanya jalan di client
-    setHash(window.location.hash);
+    const handleScroll = () => {
+      const sections = links.filter(l => l.href.startsWith("#"));
+      let active = "";
 
-    const onHashChange = () => setHash(window.location.hash);
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
+      for (const section of sections) {
+        const el = document.querySelector(section.href);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // Deteksi posisi section di tengah layar
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+            active = section.href;
+            break;
+          }
+        }
+      }
+      setHash(active);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // jalankan pertama kali
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // 🔹 Saat klik link, scroll smooth ke target
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
@@ -39,24 +56,25 @@ export default function NavbarLinks({ variant = "horizontal" }: NavbarLinksProps
     }
   };
 
-  const linkClassName = variant === "grid" 
-    ? "text-white/80 text-[0.75rem] lg:text-[0.8rem] hover:text-sky-500 transition-colors duration-200"
-    : "block transition-colors";
+  const linkClassName =
+    variant === "grid"
+      ? "text-white/80 text-[0.75rem] lg:text-[0.8rem] hover:text-sky-500 transition-colors duration-200"
+      : "block transition-colors";
 
   const activeClassName = variant === "grid"
     ? "text-sky-500 font-semibold"
-    : "text-white font-semibold";
+    : "text-sky-500 font-semibold"; // 🔹 ubah agar selalu sky-500 ketika aktif
 
   const inactiveClassName = variant === "grid"
     ? "text-white/80"
-    : "text-gray-300 hover:text-white";
+    : "text-gray-black hover:text-sky-500";
 
   if (variant === "grid") {
     return (
       <>
         {links.map((link, index) => {
           const isActive = link.href.startsWith("#") ? hash === link.href : pathname === link.href;
-          
+
           return link.href.startsWith("#") ? (
             <a
               key={index}
@@ -84,12 +102,14 @@ export default function NavbarLinks({ variant = "horizontal" }: NavbarLinksProps
     );
   }
 
+  // 🔹 Versi horizontal (default)
   return (
     <div className="p-4">
       <ul className="inline-flex justify-center space-x-5" id="link-sidebar">
         {links.map((link, index) => {
-          // Gunakan state hash, bukan window langsung
-          const isActive = link.href.startsWith("#") ? hash === link.href : pathname === link.href;
+          const isActive = link.href.startsWith("#")
+            ? hash === link.href
+            : pathname === link.href;
 
           return (
             <li key={index}>

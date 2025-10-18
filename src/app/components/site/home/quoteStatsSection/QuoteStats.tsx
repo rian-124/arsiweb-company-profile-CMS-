@@ -1,9 +1,8 @@
 import CountUp from "@/app/components/common/CountUp";
 
-
 export default function QuoteStats() {
   const statsData = [
-   { title: 4.8, desc: "Pelanggan puas", rating: 4.8 },
+    { title: 4.8, desc: "Pelanggan puas", rating: 4.8 },
     { title: 7, desc: "Tim yang solid dan semangat tinggi", suffix: "+" },
     { title: 100, desc: "Komitmen kami untuk proyek", suffix: "%" },
   ];
@@ -34,7 +33,7 @@ export default function QuoteStats() {
   return (
     <>
       <div className="max-w-[15rem]">
-        <h1 className="font-anta text-5xl">
+        <h1 className="font-anta md:text-4xl lg:text-5xl sm:text-2xl text-3xl">
           <span className="text-nowrap">
             <span>
               <CountUp
@@ -49,12 +48,12 @@ export default function QuoteStats() {
             </span>{" "}
             Perusahaan
           </span>{" "}
-          <span className="text-nowrap">Sudah Go Digital</span>{" "}
+          <span className="text-nowrap"> Digital</span>{" "}
           <span className="text-nowrap">Besama Kami</span>
         </h1>
       </div>
 
-      <div className="flex items-center md:gap-20 gap-5">
+      <div className="md:flex md:items-center flex flex-wrap md:gap-10 lg:gap-20 gap-5">
         {statsData.map((item, index) => (
           <div key={index} className="space-y-2">
             <h1 className="font-anta text-2xl">

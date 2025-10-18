@@ -31,7 +31,7 @@ const quotes = [
 
 export default function QuoteSlider() {
   return (
-    <div className="relative w-full h-full flex flex-col items-center justify-center">
+    <div className="relative w-full h-[15rem] flex flex-col items-center justify-center">
       <div className="relative w-full md:h-[27rem] h-[10rem]  flex items-center justify-center overflow-hidden ">
         <Swiper
           modules={[Pagination, Autoplay, EffectFade]}
@@ -71,8 +71,8 @@ export default function QuoteSlider() {
           ))}
         </Swiper>
       </div>
-
       <div className="custom-swiper-pagination ml-10 md:ml-0"></div>
+
     </div>
   );
 }

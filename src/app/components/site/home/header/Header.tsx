@@ -10,13 +10,13 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="text-[10px] text-gray-300 md:px-40 md:bg-[#93928e]"
+      className="text-[10px] text-gray-300 md:px-20 lg:px-40 md:bg-[#93928e]"
     >
       <div className="md:flex hidden justify-between p-5 border-b border-gray-300">
         <ContactInfo />
         <SosialIcons />
       </div>
-      <div className="flex justify-between w-full items-center mr-5 lg:hidden md:hidden bg-[#93928e] p-5">
+      <div id="scrollHeader" className="flex justify-between w-full items-center mr-5 lg:hidden md:hidden bg-[#93928e] p-5">
         <div>
           <Image
             src={"/images/logo.png"}

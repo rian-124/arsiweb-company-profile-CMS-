@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className="hidden md:grid md:grid-cols-[0.5fr_1fr] md:items-center font-poppins md:bg-[#93928e] md:text-xs md:text-white md:px-40"
+      className="sm:hidden hidden md:grid md:grid-cols-[0.5fr_1fr] md:items-center font-poppins md:bg-[#93928e] md:text-xs md:text-white md:px-20 lg:px-40"
     >
       <NavbarLogo />
       <NavbarLinks />

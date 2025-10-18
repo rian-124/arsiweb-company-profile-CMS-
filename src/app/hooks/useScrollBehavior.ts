@@ -5,6 +5,7 @@ export function useScrollBehavior() {
   useEffect(() => {
     const navbar = document.getElementById('navbar');
     const header = document.getElementById('header');
+    const scrollHeader = document.getElementById('scrollHeader');
 
     function applyScrollBehavior() {
       // Navbar scroll behavior
@@ -22,6 +23,7 @@ export function useScrollBehavior() {
         if (window.innerWidth < 768) {
           const fixedHeader = header.offsetTop;
           if (window.pageYOffset > fixedHeader) {
+            scrollHeader?.classList.remove('bg-[#93928e]')
             header.classList.add('navbar-fixed');
           } else {
             header.classList.remove('navbar-fixed');

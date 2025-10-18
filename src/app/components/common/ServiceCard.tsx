@@ -17,7 +17,7 @@ export default function ServiceCard({
   hasBorder = true,
 }: ServiceCardProps) {
   return (
-    <div className={`${
+    <div className={`relative ${
     hasBorder
       ? "border-b border-dashed md:border-b-0 md:border-r md:border-dashed"
       : ""
@@ -33,7 +33,7 @@ export default function ServiceCard({
         </div>
         <Link
           href={"#"}
-          className="flex items-center gap-3 bg-black group-hover:bg-sky-500 transition-all duration-200 w-fit p-1 rounded-full"
+          className="md:absolute md:bottom-0 flex items-center gap-3 bg-black group-hover:bg-sky-500 transition-all duration-200 w-fit p-1 rounded-full"
         >
           <Image
             src={"/icons/raquoSecond.svg"}

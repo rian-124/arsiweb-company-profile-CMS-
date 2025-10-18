@@ -11,7 +11,6 @@ export default function AboutSection({id} : {id: string}) {
         text="SIAPA KITA?"
         color="text-sky-500"
       />
-
       <AboutParagraph
         text="Kami adalah tim pengembang, desainer, dan ahli strategi yang bersemangat, membangun produk yang siap menghadapi masa depan. Eksekusi kami yang cermat memberi kami keunggulan utama"
       />

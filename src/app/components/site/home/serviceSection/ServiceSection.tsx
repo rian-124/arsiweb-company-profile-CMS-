@@ -3,13 +3,13 @@ import ServiceCard from "@/app/components/common/ServiceCard";
 
 export default function ServicesSection({id} : {id: string}) {
   return (
-    <section id={id} className="md:px-40 md:py-40 px-10 py-40 transition-all duration-500">
+    <section id={id} className="md:px-20 lg:px-40  md:py-40 px-10 py-40 transition-all duration-500">
       <IconText
         iconSrc="/icons/winterSecond.svg"
         color="text-sky-500"
         text="LAYANAN KAMI"
       />
-      <div className="text-black font-anta md:text-4xl text-3xl">
+      <div className="text-black font-anta text-xl md:text-2xl lg:text-4xl">
         <h1 className="flex flex-col gap-2">
           Layanan Kami Yang
           <span className="text-sky-500 block">Menakjubkan</span>
