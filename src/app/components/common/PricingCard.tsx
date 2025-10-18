@@ -1,6 +1,5 @@
 import Image from "next/image";
 import IconText from "./IconText";
-import Link from "next/link";
 
 // Interface untuk data benefit
 interface Benefit {
@@ -19,6 +18,7 @@ interface PricingCardProps {
   buttonText: string;
   isActive?: boolean;
   onClick?: () => void;
+  selectedTab?: string;
 }
 
 export default function PricingCard({
@@ -31,7 +31,29 @@ export default function PricingCard({
   buttonText,
   isActive = false,
   onClick,
+  selectedTab,
 }: PricingCardProps) {
+  // Function to generate WhatsApp URL with message template
+  const generateWhatsAppUrl = () => {
+    const tabNames = {
+      'custom': 'Website Custom',
+      'wordpress': 'Website WordPress', 
+      'seo': 'SEO'
+    };
+    
+    const tabName = tabNames[selectedTab as keyof typeof tabNames] || 'Website Custom';
+    const message = `Halo tim Arsiweb, saya mau konsultasi mengenai layanan ${tabName} dengan kategori ${title}. Mohon info lebih detailnya.`;
+    const encodedMessage = encodeURIComponent(message);
+    return `https://wa.me/6289516192149?text=${encodedMessage}`;
+  };
+
+  const handleButtonClick = () => {
+    if (buttonText === 'Konsultasi') {
+      window.open(generateWhatsAppUrl(), '_blank');
+    } else if (onClick) {
+      onClick();
+    }
+  };
   return (
     <div 
       className={`${isActive
@@ -78,9 +100,9 @@ export default function PricingCard({
       </div>
 
       {/* Tombol aksi */}
-      <Link
-        href="#"
-        className={`group w-36 flex items-center justify-center gap-3 px-2 md:px-4 py-2 rounded-full transition-colors font-anta mb-3 md:mb-6 ${isActive
+      <button
+        onClick={handleButtonClick}
+        className={`group w-36 flex items-center justify-center gap-3 px-2 md:px-4 py-2 rounded-full transition-colors font-anta mb-3 md:mb-6 cursor-pointer ${isActive
           ? "bg-sky-500 text-white hover:bg-sky-600"
           : "border-1 border-gray-400 text-gray-700 hover:bg-gray-300"}`}
       >
@@ -94,7 +116,7 @@ export default function PricingCard({
             className={`${isActive ? "rotate-30" : "group-hover:rotate-30 rotate-30 lg:rotate-0 transition-all duration-200"}`}
           />
         </span>
-      </Link>
+      </button>
     </div>
   );
 }

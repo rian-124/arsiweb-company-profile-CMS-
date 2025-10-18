@@ -12,7 +12,11 @@ const links = [
   { name: "Kontak", href: "/contact" },
 ];
 
-export default function NavbarLinks() {
+interface NavbarLinksProps {
+  variant?: "horizontal" | "grid";
+}
+
+export default function NavbarLinks({ variant = "horizontal" }: NavbarLinksProps) {
   const pathname = usePathname();
   const [hash, setHash] = useState("");
 
@@ -35,6 +39,51 @@ export default function NavbarLinks() {
     }
   };
 
+  const linkClassName = variant === "grid" 
+    ? "text-white/80 text-[0.75rem] lg:text-[0.8rem] hover:text-sky-500 transition-colors duration-200"
+    : "block transition-colors";
+
+  const activeClassName = variant === "grid"
+    ? "text-sky-500 font-semibold"
+    : "text-white font-semibold";
+
+  const inactiveClassName = variant === "grid"
+    ? "text-white/80"
+    : "text-gray-300 hover:text-white";
+
+  if (variant === "grid") {
+    return (
+      <>
+        {links.map((link, index) => {
+          const isActive = link.href.startsWith("#") ? hash === link.href : pathname === link.href;
+          
+          return link.href.startsWith("#") ? (
+            <a
+              key={index}
+              href={link.href}
+              onClick={(e) => handleClick(e, link.href)}
+              className={`${linkClassName} ${
+                isActive ? activeClassName : inactiveClassName
+              }`}
+            >
+              {link.name}
+            </a>
+          ) : (
+            <Link
+              key={index}
+              href={link.href}
+              className={`${linkClassName} ${
+                isActive ? activeClassName : inactiveClassName
+              }`}
+            >
+              {link.name}
+            </Link>
+          );
+        })}
+      </>
+    );
+  }
+
   return (
     <div className="p-4">
       <ul className="inline-flex justify-center space-x-5" id="link-sidebar">
@@ -48,8 +97,8 @@ export default function NavbarLinks() {
                 <a
                   href={link.href}
                   onClick={(e) => handleClick(e, link.href)}
-                  className={`block py-2 transition-colors ${
-                    isActive ? "text-white font-semibold" : "text-gray-300 hover:text-white"
+                  className={`${linkClassName} ${
+                    isActive ? activeClassName : inactiveClassName
                   }`}
                 >
                   {link.name}
@@ -57,8 +106,8 @@ export default function NavbarLinks() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`block py-2 transition-colors ${
-                    isActive ? "text-white font-semibold" : "text-gray-300 hover:text-white"
+                  className={`${linkClassName} ${
+                    isActive ? activeClassName : inactiveClassName
                   }`}
                 >
                   {link.name}

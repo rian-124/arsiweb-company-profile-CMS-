@@ -67,7 +67,7 @@ const FaqSection = () => {
                                 <p className="text-[0.6rem] md:text-xs text-white/80">Jika Anda Tidak Menemukan Apa Yang Anda Cari, Silakan Hubungi Kami Langsung Berlangganan Untuk Mendapatkan Pembaruan, Tips, Dan Wawasan Langsung Ke Kotak Masuk Anda.</p>
                             </div>
                             <Link
-                                href="#"
+                                href="/contact"
                                 className="group w-32 flex items-center justify-center gap-3 px-2 md:px-4 py-2 rounded-full bg-white hover:bg-gray-200 hover:border hover:border-black transition-colors font-anta mb-3 md:mb-6"
                             >
                                 <span className="text-[0.4rem] md:text-xs text-black">Kirim Email</span>

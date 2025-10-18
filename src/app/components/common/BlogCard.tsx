@@ -36,15 +36,15 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           {post.description}
         </p>
 
-        <button className="mt-auto py-5 text-blue-600 font-medium text-sm hover:underline flex items-center gap-3">
+        <button className="group mt-auto py-5 text-blue-600 lg:text-black hover:text-blue-600 font-medium text-sm hover:underline flex items-center gap-3 cursor-pointer">
           View Details{" "}
-          <span className="p-1 bg-blue-500 rounded-full">
+          <span className="p-1 bg-blue-500 lg:bg-black group-hover:bg-blue-500 rounded-full">
             <Image
               src={"/icons/raquoSecond.svg"}
               alt="raquo"
               width={14}
               height={14}
-              className="rotate-[30deg]"
+              className="rotate-[30deg] lg:rotate-0 group-hover:rotate-30 transition-all duration-200"
             />
           </span>
         </button>

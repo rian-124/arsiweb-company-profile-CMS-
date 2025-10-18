@@ -51,7 +51,7 @@ const TeamSection = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-[#161616] text-white md:px-20 lg:px-40 md:py-26 px-14 py-20 rounded-t-[4rem]">
+        <div className="min-h-screen bg-[#161616] text-white md:px-20 lg:px-40 md:py-26 px-14 py-20 rounded-t-[2rem] md:rounded-t-[4rem]">
             <div className="max-w-7xl mx-auto">
                 <IconText
                     iconSrc="/icons/winterSecond.svg"

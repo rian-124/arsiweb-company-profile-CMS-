@@ -42,7 +42,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Email</h3>
-                    <p className="text-gray-600">info@arsiweb.com</p>
+                    <p className="text-gray-600">arsiweb@gmail.com</p>
                   </div>
                 </div>
 
@@ -54,7 +54,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Telepon</h3>
-                    <p className="text-gray-600">+62 123 456 7890</p>
+                    <p className="text-gray-600">+62 812-9047-7088</p>
                   </div>
                 </div>
 
@@ -67,7 +67,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800">Alamat</h3>
-                    <p className="text-gray-600">Jakarta, Indonesia</p>
+                    <p className="text-gray-600">Gedung Aldeoz Lantai 6 Jl. Warung Jati Barat No.39, RT.010/RW.004, Kalibata, Kec.Pancoran, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12740</p>
                   </div>
                 </div>
               </div>

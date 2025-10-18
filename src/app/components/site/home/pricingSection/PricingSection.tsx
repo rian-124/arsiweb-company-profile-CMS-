@@ -160,13 +160,13 @@ export default function PricingSection() {
         </div>
       </div>
 
-      <div className="flex gap-2 mt-8 bg-gray-900 rounded-full p-2">
+      <div className="flex mt-8 bg-gray-900 rounded-full p-2">
         <button
           onClick={() => {
             setSelectedTab('custom');
             setActiveCardIndex(null);
           }}
-          className={`px-4 py-1.5 rounded-full text-sm transition-all cursor-pointer ${
+          className={`md:px-4 px-3 py-1.5 rounded-full md:text-sm text-[0.7rem] transition-all cursor-pointer ${
             selectedTab === 'custom'
               ? 'bg-sky-500 text-white'
               : 'text-white hover:bg-gray-800'
@@ -179,7 +179,7 @@ export default function PricingSection() {
             setSelectedTab('wordpress');
             setActiveCardIndex(null);
           }}
-          className={`px-4 py-1.5 rounded-full text-sm transition-all cursor-pointer ${
+          className={`md:px-4 px-3 py-1.5 rounded-full md:text-sm text-[0.7rem] transition-all cursor-pointer ${
             selectedTab === 'wordpress'
               ? 'bg-sky-500 text-white'
               : 'text-white hover:bg-gray-800'
@@ -192,7 +192,7 @@ export default function PricingSection() {
             setSelectedTab('seo');
             setActiveCardIndex(null);
           }}
-          className={`px-4 py-1.5 rounded-full text-sm transition-all cursor-pointer ${
+          className={`md:px-4 px-3 py-1.5 rounded-full md:text-sm text-[0.7rem] transition-all cursor-pointer ${
             selectedTab === 'seo'
               ? 'bg-sky-500 text-white'
               : 'text-white hover:bg-gray-800'
@@ -215,6 +215,7 @@ export default function PricingSection() {
             buttonText={card.buttonText}
             isActive={activeCardIndex === index}
             onClick={() => setActiveCardIndex(activeCardIndex === index ? null : index)}
+            selectedTab={selectedTab}
           />
         ))}
       </div>

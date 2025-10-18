@@ -9,7 +9,7 @@ interface NavbarLogoProps {
 export default function NavbarLogo({ width = 100, height = 100, className = "" }: NavbarLogoProps) {
   return (
     <div className={className}>
-      <Image src={'/images/logo.png'} alt="arsiwebLogo" width={width} height={height} />
+      <Image src={'/icons/logo-arsiweb.svg'} alt="arsiwebLogo" width={width} height={height} />
     </div>
   );
 }

@@ -37,7 +37,7 @@ export default function BlogSection() {
       <div className="flex justify-center items-center flex-col">
         <BlogHeader />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pb-20 px-10 md:px-40 md:py-10 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-10 md:px-40 md:py-6 py-4 mb-10 lg:mb-20">
           {posts.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
