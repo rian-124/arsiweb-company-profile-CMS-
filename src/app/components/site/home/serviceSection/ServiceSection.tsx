@@ -1,9 +1,52 @@
+import { Suspense } from 'react';
 import IconText from "@/app/components/common/IconText";
 import ServiceCard from "@/app/components/common/ServiceCard";
+import LoadingSpinner from '@/components/ui/loading-spinner';
+import ErrorBoundary from '@/components/ui/error-boundary';
+import { getServices } from '@/lib/firebase/firestore';
+import { SectionProps } from '@/types';
 
-export default function ServicesSection({id} : {id: string}) {
+async function ServicesList() {
+  const services = await getServices();
+
+  if (services.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <p className="text-gray-600">No services available at the moment.</p>
+      </div>
+    );
+  }
+
   return (
-    <section id={id} className="md:px-20 lg:px-40  md:py-40 px-10 py-40 transition-all duration-500">
+    <div className="md:flex md:flex-row flex flex-col text-black py-10 text-xs">
+      {services.map((service, index) => (
+        <ServiceCard
+          key={service.id}
+          iconSrc={service.iconSrc}
+          title={service.title}
+          description={service.description}
+          description2={service.description2}
+          hasBorder={index !== services.length - 1}
+        />
+      ))}
+    </div>
+  );
+}
+
+function ServicesLoadingFallback() {
+  return (
+    <div className="py-10">
+      <LoadingSpinner size="lg" text="Loading services..." />
+    </div>
+  );
+}
+
+export default function ServicesSection({ id }: SectionProps) {
+  return (
+    <section 
+      id={id} 
+      className="md:px-20 lg:px-40 md:py-40 px-10 py-40 transition-all duration-500"
+    >
       <IconText
         iconSrc="/icons/winterSecond.svg"
         color="text-sky-500"
@@ -16,33 +59,11 @@ export default function ServicesSection({id} : {id: string}) {
         </h1>
       </div>
 
-      <div className="md:flex md:flex-row flex flex-col text-black py-10 text-xs">
-        <ServiceCard
-          iconSrc="/icons/wordpress.svg"
-          title="Website Wordpress"
-          description="Strategic Planning to Validate &"
-          description2="Launch Product Ideas Fast"
-        />
-        <ServiceCard
-          iconSrc="/icons/wCustome.svg"
-          title="Website Custome"
-          description="User-First Designs to Boost and"
-          description2="Conversion & Delight Users"
-        />
-        <ServiceCard
-          iconSrc="/icons/seo.svg"
-          title="SEO Spesialist"
-          description="Scalable Apps Built Using Modern"
-          description2="Tech Stacks"
-        />
-        <ServiceCard
-        iconSrc="/icons/pk.svg"
-          title="Paket Custome"
-          description="From Code to Cloud — We Ensure"
-          description2="Smooth Delivery"
-          hasBorder={false}
-        />
-      </div>
+      <ErrorBoundary>
+        <Suspense fallback={<ServicesLoadingFallback />}>
+          <ServicesList />
+        </Suspense>
+      </ErrorBoundary>
     </section>
   );
 }

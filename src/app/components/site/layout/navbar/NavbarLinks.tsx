@@ -8,6 +8,8 @@ const links = [
   { name: "Dashboard", href: "/" },
   { name: "Tentang Kami", href: "#tentang-kami" },
   { name: "Layanan Kami", href: "#layanan-kami" },
+  { name: "Proyek", href: "#proyek-kami" },
+  { name: "Testimoni", href: "#testimoni-pelanggan" },
   { name: "Blog", href: "/blog" },
   { name: "Kontak", href: "/contact" },
 ];

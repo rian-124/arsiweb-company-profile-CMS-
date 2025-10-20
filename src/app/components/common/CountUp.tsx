@@ -45,7 +45,7 @@ export default function CountUp({
     const str = num.toString();
     if (str.includes('.')) {
       const decimals = str.split('.')[1];
-      if (parseInt(decimals) !== 0) {
+      if (decimals && parseInt(decimals) !== 0) {
         return decimals.length;
       }
     }
@@ -84,6 +84,7 @@ export default function CountUp({
         clearTimeout(durationTimeoutId);
       };
     }
+    return undefined;
   }, [isInView, startWhen, motionValue, direction, from, to, delay, onStart, onEnd, duration]);
 
   useEffect(() => {

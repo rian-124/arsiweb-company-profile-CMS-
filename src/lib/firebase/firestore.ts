@@ -50,6 +50,7 @@ import {
   type ContactInfo,
   type SocialMedia,
 } from './collections';
+import { createCachedFunction, cacheKeys, CACHE_TAGS, CACHE_DURATIONS } from '@/lib/cache';
 
 // ============================================
 // HELPER FUNCTION: Convert Firestore timestamp to Date
@@ -70,10 +71,7 @@ const convertTimestamps = (data: any): any => {
 // SERVICES
 // ============================================
 
-/**
- * Get all active services, sorted by order
- */
-export async function getServices(): Promise<Service[]> {
+async function getServicesUncached(): Promise<Service[]> {
   try {
     const servicesRef = collection(db, COLLECTION_NAMES.SERVICES);
     const q = query(
@@ -91,6 +89,13 @@ export async function getServices(): Promise<Service[]> {
     return [];
   }
 }
+
+export const getServices = createCachedFunction(
+  getServicesUncached,
+  cacheKeys.services(),
+  [CACHE_TAGS.SERVICES],
+  CACHE_DURATIONS.LONG
+);
 
 /**
  * Get single service by ID
@@ -286,10 +291,12 @@ export async function getBlogPostBySlug(
     const snapshot = await getDocs(q);
     if (!snapshot.empty) {
       const doc = snapshot.docs[0];
-      return {
-        id: doc.id,
-        ...convertTimestamps(doc.data()),
-      } as BlogPost;
+      if (doc) {
+        return {
+          id: doc.id,
+          ...convertTimestamps(doc.data()),
+        } as BlogPost;
+      }
     }
     return null;
   } catch (error) {
