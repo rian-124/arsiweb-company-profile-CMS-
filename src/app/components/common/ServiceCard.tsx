@@ -16,13 +16,27 @@ export default function ServiceCard({
   iconSrc = "",
   hasBorder = true,
 }: ServiceCardProps) {
+  // Validate iconSrc to ensure it's a valid URL or path
+  const isValidIcon = iconSrc && (
+    iconSrc.startsWith('/') || 
+    iconSrc.startsWith('http://') || 
+    iconSrc.startsWith('https://') ||
+    iconSrc.startsWith('data:')
+  );
+
   return (
     <div className={`relative ${
     hasBorder
       ? "border-b border-dashed md:border-b-0 md:border-r md:border-dashed"
       : ""
   } md:w-fit p-5 w-full space-y-5`}>
-      <Image src={iconSrc} alt={title} width={50} height={50} />
+      {isValidIcon ? (
+        <Image src={iconSrc} alt={title} width={50} height={50} />
+      ) : (
+        <div className="w-[50px] h-[50px] bg-gray-200 rounded-lg flex items-center justify-center">
+          <span className="text-gray-400 text-xs">No Icon</span>
+        </div>
+      )}
       <div className="space-y-7 group">
         <div className="space-y-3">
           <h3 className="text-2xl font-anta group-hover:text-sky-500 transition-all duration-200">{title}</h3>
